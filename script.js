@@ -1,17 +1,24 @@
+// When the HTML page has been completely loaded into the browser
 document.addEventListener("DOMContentLoaded", function () {
-   // Smooth Scrolling for all nav links
+   // Returns a NodeList of navigation lists with the <nav> tag
    document.querySelectorAll('nav a[href^="#"]').forEach((anchor) => {
+      //the logic for ensuring that it scrolls down to every click
       anchor.addEventListener("click", function (e) {
          e.preventDefault();
 
+         //gets the height of the header
          const headerOffset = document.querySelector("header").offsetHeight;
+         // get the section that you clicked
          const targetElement = document.querySelector(
             this.getAttribute("href")
          );
+
+         // Gets the position of where the scroll to
          const elementPosition =
             targetElement.getBoundingClientRect().top + window.scrollY;
          const offsetPosition = elementPosition - headerOffset - 20; // Adjust extra padding if needed
 
+         //scrolls to it smoothley
          window.scrollTo({
             top: offsetPosition,
             behavior: "smooth"
@@ -27,6 +34,8 @@ document.addEventListener("DOMContentLoaded", function () {
    // Hamburger Menu Toggle
    const menuToggle = document.getElementById("menu-toggle");
    const navMenu = document.getElementById("nav-menu");
+   
+   //when you click the toggle it activates the navMenu
    menuToggle.addEventListener("click", () => {
       navMenu.classList.toggle("active");
    });
