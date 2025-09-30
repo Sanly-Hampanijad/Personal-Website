@@ -1,1 +1,0 @@
-# SanlyHampanijad.github.io
